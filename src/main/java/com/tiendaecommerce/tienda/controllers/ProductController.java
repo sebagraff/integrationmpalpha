@@ -19,4 +19,5 @@ public class ProductController {
     @GetMapping("/products")
     public List<ProductDTO> getAll(){
         return this.productRepository.findAll().stream().map(ProductDTO::new).collect(Collectors.toList());
-    }}
+    }
+}

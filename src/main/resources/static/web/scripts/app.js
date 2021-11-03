@@ -1,5 +1,31 @@
+var urlParams = new URLSearchParams(window.location.search);
+var params = Object.fromEntries(urlParams);
+if (Object.keys(params).length > 0)
+  {
+    if (params.status === "approved")
+    {
+      swal({
+        title: "Pago aprobado",
+        text: "Tipo de pago " + params.payment_type+ "\n" + params.external_reference + "\n" + "Numero de operación " + params.payment_id + "\n",
+        icon: "success",
+      });
+    }
+    else if(params.status === "pending")
+    {
+      swal({
+        title: "Pago pendiente",
+        icon: "warning",
+      });
+    }
+    else if(params.status === "failure")
+    {
+      swal({
+        title: "Pago rechazado",
+        icon: "error",
+      });
+    }
 
-
+  };
 
 const app = Vue.createApp({
   data() {
@@ -71,7 +97,7 @@ const app = Vue.createApp({
                   "success": "https://integrationmpalpha.herokuapp.com/web/index.html",
                 },
                  "external_reference": "sebastiandavidgraff@gmail.com",
-
+                 "notification_url": "https://integrationmpalpha.herokuapp.com/webhooksmp",
               }`;
 
 
@@ -85,7 +111,6 @@ const app = Vue.createApp({
       fetch("https://api.mercadopago.com/checkout/preferences", requestOptions)
         .then(response => response.json())
         .then(result => window.location.href = result.init_point)
-        .then(response => console.log(response))
         .catch(error => console.log('error', error));
 
 
