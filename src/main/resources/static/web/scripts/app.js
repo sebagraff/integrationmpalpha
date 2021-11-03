@@ -85,6 +85,7 @@ const app = Vue.createApp({
       fetch("https://api.mercadopago.com/checkout/preferences", requestOptions)
         .then(response => response.json())
         .then(result => window.location.href = result.init_point)
+        .then(response => console.log(response))
         .catch(error => console.log('error', error));
 
 
