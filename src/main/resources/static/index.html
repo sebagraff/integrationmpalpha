@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+  <title>Tienda E-Commerce</title>
+</head>
+
+<body>
+  <div id="app">
+    <header>
+      <img src="./assets/banner2.jpg" alt="banner" style=width:100%>
+      <h1>Bienvenido a Tienda E-Commerce</h1>
+      <h2>Celulares</h2>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Celulares</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                  aria-expanded="false">
+                  Dropdown
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li>
+                    <hr class="dropdown-divider">
+                  </li>
+                  <li><a class="dropdown-item" href="#">Pagar</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <form action="">
+      <div class="row row-cols-1 row-cols-md-4 g-4">
+        <div class="col" v-for='phones in products'>
+          <div class="card h-100" style="width: 18rem;">
+            <img :src="phones.imgUrl" class="card-img-top" alt="..." style=width:100% style=object-fit:cover>
+            <div class="card-body">
+              <h5 class="card-title">{{phones.name}}</h5>
+              <p class="card-text">{{phones.description}}</p>
+              <p class="card-text">${{phones.price}}</p>
+              <button class="btn btn-primary" type="button" @click="buyPhone(phones)">Comprar</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+    </main>
+  </div>
+  <!-- bootstrap -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+    crossorigin="anonymous"></script>
+  <!-- script axios -->
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <!-- script vue -->
+  <script src="https://unpkg.com/vue@next"></script>
+  <!-- scripts -->
+  <script src="./scripts/app.js"></script>
+  <!-- MercadoPago -->
+  <script src="https://sdk.mercadopago.com/js/v2"></script>
+  <script>
+    const mp = new MercadoPago('APP_USR-7eb0138a-189f-4bec-87d1-c0504ead5626');
+</script>
+</body>
+
+</html>
