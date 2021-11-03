@@ -66,9 +66,9 @@ const app = Vue.createApp({
                 },
                 auto_return : "approved", 
                 "back_urls": {
-                  "failure": "http://localhost:8080/index.html",
-                  "pending": "http://localhost:8080/index.html",
-                  "success": "http://localhost:8080/index.html"
+                  "failure": "https://integrationmpalpha.herokuapp.com/web/index.html",
+                  "pending": "https://integrationmpalpha.herokuapp.com/web/index.html",
+                  "success": "https://integrationmpalpha.herokuapp.com/web/index.html",
                 },
                  "external_reference": "sebastiandavidgraff@gmail.com",
 
