@@ -5,11 +5,15 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- CSS -->
+  <link rel="stylesheet" href="./styles/index.css">
   <!-- Bootstrap -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-      <!-- Sweet Alert -->
+  <!-- Sweet Alert -->
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <!-- MercadoPago Seguridad -->
+  <script src="https://www.mercadopago.com/v2/security.js" view="home"></script>
   <title>Tienda E-Commerce</title>
 </head>
 
@@ -26,41 +30,29 @@
               <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="#">Celulares</a>
               </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
-                  aria-expanded="false">
-                  Dropdown
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="#">Action</a></li>
-                  <li><a class="dropdown-item" href="#">Another action</a></li>
-                  <li>
-                    <hr class="dropdown-divider">
-                  </li>
-                  <li><a class="dropdown-item" href="#">Pagar</a></li>
-                </ul>
-              </li>
             </ul>
           </div>
         </div>
       </nav>
     </header>
     <main>
-      <form action="">
-      <div class="row row-cols-1 row-cols-md-4 g-4">
-        <div class="col" v-for='phones in products'>
-          <div class="card h-100" style="width: 18rem;">
-            <img :src="phones.imgUrl" class="card-img-top" alt="..." style=width:100% style=object-fit:cover>
-            <div class="card-body">
-              <h5 class="card-title">{{phones.name}}</h5>
-              <p class="card-text">{{phones.description}}</p>
-              <p class="card-text">${{phones.price}}</p>
-              <button class="btn btn-primary" type="button" @click="buyPhone(phones)">Comprar</a>
+      <section class="products">
+        <div class="row">
+          <div class="col-lg-2 mb-3 d-flex" v-for='phones in products'>
+            <div class="card" style="width: 18rem;">
+              <img :src="phones.imgUrl" class="card-img-top" alt="...">
+              <div class="card-body d-flex flex-column">
+                <h5 class="card-title mb-4">{{phones.name}}</h5>
+                <p class="card-text mb-4">{{phones.description}}</p>
+                <p class="card-text mb-4">Cantidad {{phones.stock}}</p>
+                <p class="card-text mb-4">${{phones.price}}</p>
+                <button class="btn btn-primary mt-auto align-self-start" type="button" @click="buyPhone(phones)">Pagar
+                  la compra</a>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </form>
+      </section>
     </main>
   </div>
   <!-- bootstrap -->
@@ -77,8 +69,7 @@
   <script src="https://sdk.mercadopago.com/js/v2"></script>
   <script>
     const mp = new MercadoPago('APP_USR-7eb0138a-189f-4bec-87d1-c0504ead5626');
-</script>
-
+  </script>
 
 </body>
 

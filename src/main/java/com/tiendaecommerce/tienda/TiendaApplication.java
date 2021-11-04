@@ -19,19 +19,19 @@ public class TiendaApplication {
 		return(args) -> {
 			Product samsungs20 = productRepository.save(
 					new Product(
-							"Samsung S20","Dispositivo móvil de Tienda e-commerc","https://images.samsung.com/is/image/samsung/assets/ar/s20-buy/S20-FE_Navy_SKUimage_MO-img.jpg",1,100000
+							"Samsung S20","Dispositivo móvil de Tienda e-commerce","https://images.samsung.com/is/image/samsung/assets/ar/s20-buy/S20-FE_Navy_SKUimage_MO-img.jpg",1,100000
 					)
 			);
 
 			Product iphone12 = productRepository.save(
 					new Product(
-							"Iphone 12","Dispositivo móvil de Tienda e-commerc","https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-12-family-select-2021?wid=940&hei=1112&fmt=jpeg&qlt=80&.v=1617135051000",1,150000
+							"Iphone 12","Dispositivo móvil de Tienda e-commerce","https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-12-family-select-2021?wid=940&hei=1112&fmt=jpeg&qlt=80&.v=1617135051000",1,150000
 					)
 			);
 
 			Product redminote10pro = productRepository.save(
 					new Product(
-							"Xiomi Redmi Note 10 pro","Dispositivo móvil de Tienda e-commerce","https://buytek.net/wp-content/uploads/2021/07/NOTE-10-PRO.2.jpg",1,90000
+							"Xiaomi Redmi Note 10","Dispositivo móvil de Tienda e-commerce","https://buytek.net/wp-content/uploads/2021/07/NOTE-10-PRO.2.jpg",1,90000
 					)
 			);
 		};

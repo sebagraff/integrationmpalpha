@@ -10,14 +10,14 @@ if (Object.keys(params).length > 0)
         icon: "success",
       });
     }
-    else if(params.status === "pending")
+    else if(params.status === "in_process")
     {
       swal({
         title: "Pago pendiente",
         icon: "warning",
       });
     }
-    else if(params.status === "failure")
+    else if(params.status === "rejected")
     {
       swal({
         title: "Pago rechazado",
@@ -40,8 +40,7 @@ const app = Vue.createApp({
     axios.get('/api/products')
       .then(res => {
         this.products = res.data
-        console.log("holamundo")
-      }).catch(res => console.log("bye world"))
+      }).catch(res => console.log("Error"))
 
   },
 
@@ -56,7 +55,7 @@ const app = Vue.createApp({
       var raw = `{
                 "items": [
                   {
-                      "id": "`+ phones.id + `",
+                    "id": 1234,
                     "title": "`+ phones.name + `",
                     "description": "`+ phones.description + `",
                     "picture_url": "`+ phones.imgUrl + `",
@@ -90,7 +89,7 @@ const app = Vue.createApp({
                   ],
                   "installments" : 6,
                 },
-                auto_return : "approved", 
+                "auto_return": "all", 
                 "back_urls": {
                   "failure": "https://integrationmpalpha.herokuapp.com/web/index.html",
                   "pending": "https://integrationmpalpha.herokuapp.com/web/index.html",
