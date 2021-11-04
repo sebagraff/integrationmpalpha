@@ -1,3 +1,4 @@
+//Control de query string para pop-up de alerta 
 var urlParams = new URLSearchParams(window.location.search);
 var params = Object.fromEntries(urlParams);
 if (Object.keys(params).length > 0)
@@ -31,27 +32,35 @@ const app = Vue.createApp({
   data() {
     return {
       products: [],
-      buy: {},
     }
 
   },
 
-  created() {
-    axios.get('/api/products')
-      .then(res => {
-        this.products = res.data
-      }).catch(res => console.log("Error"))
+  //almacenamos del backend info del producto en products
 
+  created() {
+
+    var req = {
+      method: 'GET',
+      redirect: 'follow'
+    };
+    
+    fetch("/api/products", req)
+      .then(response => response.json())
+      .then(result => this.products = result)
+      .catch(error => console.log('error', error));
   },
 
+//buyPhone activa el proceso de compra
   methods: {
     buyPhone(phones) {
-      console.log(phones.id)
       var myHeaders = new Headers();
+      //enviamos el integrator id y el token de seguridad
       myHeaders.append("x-integrator-id", "dev_24c65fb163bf11ea96500242ac130004");
       myHeaders.append("Authorization", "Bearer APP_USR-6317427424180639-042414-47e969706991d3a442922b0702a0da44-469485398");
       myHeaders.append("Content-Type", "application/javascript");
 
+      // enviamos las preferences solicitadas para la pasarela de pago
       var raw = `{
                 "items": [
                   {
@@ -106,7 +115,7 @@ const app = Vue.createApp({
         body: raw,
         redirect: 'follow'
       };
-
+      //recibimos el init point y redirigimos al sitio
       fetch("https://api.mercadopago.com/checkout/preferences", requestOptions)
         .then(response => response.json())
         .then(result => window.location.href = result.init_point)
