@@ -1,32 +1,28 @@
 //Control de query string para pop-up de alerta 
 var urlParams = new URLSearchParams(window.location.search);
 var params = Object.fromEntries(urlParams);
-if (Object.keys(params).length > 0)
-  {
-    if (params.status === "approved")
-    {
-      swal({
-        title: "Pago aprobado",
-        text: "Tipo de pago " + params.payment_type+ "\n" + params.external_reference + "\n" + "Numero de operación " + params.payment_id + "\n",
-        icon: "success",
-      });
-    }
-    else if(params.status === "in_process")
-    {
-      swal({
-        title: "Pago pendiente",
-        icon: "warning",
-      });
-    }
-    else if(params.status === "rejected")
-    {
-      swal({
-        title: "Pago rechazado",
-        icon: "error",
-      });
-    }
+if (Object.keys(params).length > 0) {
+  if (params.status === "approved") {
+    swal({
+      title: "Pago aprobado",
+      text: "Tipo de pago " + params.payment_type + "\n" + params.external_reference + "\n" + "Numero de operación " + params.payment_id + "\n",
+      icon: "success",
+    });
+  }
+  else if (params.status === "in_process") {
+    swal({
+      title: "Pago pendiente",
+      icon: "warning",
+    });
+  }
+  else if (params.status === "rejected") {
+    swal({
+      title: "Pago rechazado",
+      icon: "error",
+    });
+  }
 
-  };
+};
 
 const app = Vue.createApp({
   data() {
@@ -44,14 +40,14 @@ const app = Vue.createApp({
       method: 'GET',
       redirect: 'follow'
     };
-    
+
     fetch("/api/products", req)
       .then(response => response.json())
       .then(result => this.products = result)
       .catch(error => console.log('error', error));
   },
 
-//buyPhone activa el proceso de compra
+  //buyPhone activa el proceso de compra
   methods: {
     buyPhone(phones) {
       var myHeaders = new Headers();
