@@ -1,4 +1,7 @@
-//Control de query string para pop-up de alerta 
+const mp = new MercadoPago('APP_USR-7eb0138a-189f-4bec-87d1-c0504ead5626',{locale :'es-AR'});
+
+
+//Control de query string para pop-up de alerta
 var urlParams = new URLSearchParams(window.location.search);
 var params = Object.fromEntries(urlParams);
 if (Object.keys(params).length > 0) {
